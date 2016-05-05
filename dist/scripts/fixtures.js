@@ -5,11 +5,11 @@ var albumCezanne = {
      year: '1839',
      albumArtUrl: 'assets/images/album_covers/07.png',
      songs: [
-         { name: 'Woman With a Green Hat', length: '5:37' },
-         { name: 'Card Players', length: '4:25' },
-         { name: 'Still Life With a Courtain', length: '6:12' },
-         { name: 'Harlequin', length: '4:32'},
-         { name: 'The House with the Cracked Walls', length: '3:26'}
+         { title: 'Woman With a Green Hat', duration: '5:37' },
+         { title: 'Card Players', duration: '4:25' },
+         { title: 'Still Life With a Courtain', duration: '6:12' },
+         { title: 'Harlequin', duration: '4:32'},
+         { title: 'The House with the Cracked Walls', duration: '3:26'}
      ]
  };
 
@@ -35,10 +35,10 @@ var albumPicasso = {
      year: '1909',
      albumArtUrl: 'assets/images/album_covers/20.png',
      songs: [
-         { name: 'Hello, Operator?', length: '1:01' },
-         { name: 'Ring, ring, ring', length: '5:01' },
-         { name: 'Fits in your pocket', length: '3:21'},
-         { name: 'Can you hear me now?', length: '3:14' },
-         { name: 'Wrong phone number', length: '2:15'}
+         { title: 'Hello, Operator?', duration: '1:01' },
+         { title: 'Ring, ring, ring', duration: '5:01' },
+         { title: 'Fits in your pocket', duration: '3:21'},
+         { title: 'Can you hear me now?', duration: '3:14' },
+         { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
