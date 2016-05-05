@@ -14,11 +14,12 @@
             })
             .state('album', {
                 url: '/album',
-                templateUrl: 'templates/album.html'
+                templateUrl: '/templates/album.html'
             })
             .state('collection', {
                 url: '/collection',
-                templateUrl: 'templates/collection.html'
+                controller: 'CollectionCtrl as collection',
+                templateUrl: '/templates/collection.html'
             });
     }
     
