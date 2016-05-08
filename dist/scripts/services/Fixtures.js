@@ -1,7 +1,7 @@
 (function() {
     function Fixtures() {
         var Fixtures = {};
-        
+
         var albumCezanne = {
             name: 'The Stills',
             artist: 'Paul Cezanne',
@@ -46,14 +46,14 @@
                 { title: 'Wrong phone number', duration: '2:15'}
             ]
         };
-        
+
         Fixtures.getAlbum = function() {
             return albumPicasso;
-        }
-        
+        };
+
         return Fixtures;
     }
-    
+
     angular
         .module('blocJams')
         .factory('Fixtures', Fixtures);
