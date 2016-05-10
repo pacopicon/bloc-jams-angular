@@ -1,12 +1,18 @@
 (function() {
-    function SongPlayer() {
-        
-        var SongPlayer = {};
+    function SongPlayer(Fixtures) {
         
         //  ___     _          _           _  _   _       _ _         _
         // | _ \_ _(_)_ ____ _| |_ ___    /_\| |_| |_ _ _(_) |__ _  _| |_ ___ ___
         // |  _/ '_| \ V / _` |  _/ -_)  / _ \  _|  _| '_| | '_ \ || |  _/ -_|_-<
         // |_| |_| |_|\_/\__,_|\__\___| /_/ \_\__|\__|_| |_|_.__/\_,_|\__\___/__/
+        
+        var SongPlayer = {};
+        
+        /**
+        * @desc gets album object from Fixtures file
+        * @ype {Object}
+        */
+        var currentAlbum = Fixtures.getAlbum();
         
         /**
         * @desc Buzz object audio file
@@ -19,7 +25,7 @@
         // |  _/ '_| \ V / _` |  _/ -_) |  _| || | ' \/ _|  _| / _ \ ' \(_-<
         // |_| |_| |_|\_/\__,_|\__\___| |_|  \_,_|_||_\__|\__|_\___/_||_/__/
          
-         /**
+        /**
         * @function setSong
         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
         * @param {Object} song
@@ -49,11 +55,24 @@
             song.playing = true;
         };
         
+        /**
+        * @function getSongIndex
+        * @desc returns the index of the song param 
+        * @param {Object} song
+        */
+        var getSongIndex = function(song) {
+            return currentAlbum.songs.indexOf(song);
+        }
+        
         //  ___      _    _ _        _  _   _       _ _         _
         // | _ \_  _| |__| (_)__    /_\| |_| |_ _ _(_) |__ _  _| |_ ___ ___
         // |  _/ || | '_ \ | / _|  / _ \  _|  _| '_| | '_ \ || |  _/ -_|_-<
         // |_|  \_,_|_.__/_|_\__| /_/ \_\__|\__|_| |_|_.__/\_,_|\__\___/__/
         
+        /**
+        * @desc Active song object from list of songs
+        * @type {Object}
+        */
         SongPlayer.currentSong = null;
         
         //  ___      _    _ _      __  __     _   _            _
@@ -81,7 +100,12 @@
         };
         
         return SongPlayer;
-    }
+        
+        SongPlayer.previous = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex--;
+        };
+    };
     
     angular
         .module('blocJams')
