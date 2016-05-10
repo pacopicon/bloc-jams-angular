@@ -2,7 +2,11 @@
     function SongPlayer() {
         
         var SongPlayer = {};
-        var currentSong = null;
+        
+        //  ___     _          _           _  _   _       _ _         _
+        // | _ \_ _(_)_ ____ _| |_ ___    /_\| |_| |_ _ _(_) |__ _  _| |_ ___ ___
+        // |  _/ '_| \ V / _` |  _/ -_)  / _ \  _|  _| '_| | '_ \ || |  _/ -_|_-<
+        // |_| |_| |_|\_/\__,_|\__\___| /_/ \_\__|\__|_| |_|_.__/\_,_|\__\___/__/
         
         /**
         * @desc Buzz object audio file
@@ -10,7 +14,11 @@
         */
         var currentBuzzObject = null;
         
-        
+        //  ___     _          _          __              _   _
+        // | _ \_ _(_)_ ____ _| |_ ___   / _|_  _ _ _  __| |_(_)___ _ _  ___
+        // |  _/ '_| \ V / _` |  _/ -_) |  _| || | ' \/ _|  _| / _ \ ' \(_-<
+        // |_| |_| |_|\_/\__,_|\__\___| |_|  \_,_|_||_\__|\__|_\___/_||_/__/
+         
          /**
         * @function setSong
         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
@@ -19,7 +27,7 @@
         var setSong = function(song) {
             if (currentBuzzObject) {
                 currentBuzzObject.stop();
-                currentSong.playing = null;
+                SongPlayer.currentSong.playing = null;
             }
 
             currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -27,7 +35,7 @@
                 preload: true
             });
                 
-            currentSong = song;
+            SongPlayer.currentSong = song;
         };
         
         
@@ -41,12 +49,25 @@
             song.playing = true;
         };
         
+        //  ___      _    _ _        _  _   _       _ _         _
+        // | _ \_  _| |__| (_)__    /_\| |_| |_ _ _(_) |__ _  _| |_ ___ ___
+        // |  _/ || | '_ \ | / _|  / _ \  _|  _| '_| | '_ \ || |  _/ -_|_-<
+        // |_|  \_,_|_.__/_|_\__| /_/ \_\__|\__|_| |_|_.__/\_,_|\__\___/__/
+        
+        SongPlayer.currentSong = null;
+        
+        //  ___      _    _ _      __  __     _   _            _
+        // | _ \_  _| |__| (_)__  |  \/  |___| |_| |_  ___  __| |___
+        // |  _/ || | '_ \ | / _| | |\/| / -_)  _| ' \/ _ \/ _` (_-<
+        // |_|  \_,_|_.__/_|_\__| |_|  |_\___|\__|_||_\___/\__,_/__/
+        
         SongPlayer.play = function(song) {
-            if (currentSong !== song) {
+            song = song || SongPlayer.currentSong;
+            if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 playSong(song);
                 
-            } else if (currentSong === song) {
+            } else if (SongPlayer.currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
                     playSong(song);
                 }
@@ -54,6 +75,7 @@
         };
         
         SongPlayer.pause = function(song) {
+            song = song || SongPlayer.currentSong;
             currentBuzzObject.pause();
             song.playing = false;
         };
