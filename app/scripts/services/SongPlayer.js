@@ -32,7 +32,7 @@
         */
         var setSong = function(song) {
             if (currentBuzzObject) {
-                stopSong(song);
+                stopSong(SongPlayer.currentSong);
             };
 
             currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -127,7 +127,7 @@
             currentSongIndex--;
             
             if (currentSongIndex < 0) {
-                stopSong(song);
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
@@ -144,8 +144,10 @@
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
             
-            if (currentSongIndex > currentAlbum.songs.length) {
-                stopSong(song);
+            var lastSongIndex = currentAlbum.songs.length - 1;
+            
+            if (currentSongIndex > lastSongIndex) {
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
